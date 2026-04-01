@@ -24,15 +24,18 @@ const Header = () => {
                             <li><Link to="/">Inicio</Link></li>
                             <li><Link to="/productos">Productos</Link></li>
                             <li><Link to="/nosotros">Nosotros</Link></li>
-                            <li><Link to="/login" className="login-btn">Login</Link></li>
+                            
                         </ul>
                     </nav>
                 </div>
 
                 <div className="header-actions">
-                    <button className="icon-btn" aria-label="Buscar">🔍</button>
+                    <div className="search-box">
+    <span className="search-icon">⌕</span>
+    <input type="text" placeholder="Buscar productos" />
+</div>
                     <button className="icon-btn" aria-label="Carrito">🛒</button>
-                    <Link to="/usuario" className="user-btn" aria-label="Perfil">👤</Link>
+                    <Link to="/login" className="user-btn" aria-label="Perfil">👤</Link>
                 </div>
 
             </div>
