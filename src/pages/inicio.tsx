@@ -3,6 +3,12 @@ import "./style/inicio.css";
 
 const inicio = () => {
     const marcas = ["TECHNOVA", "Quantum", "NextGear", "HyperOne", "NeonPulse"];
+    const categorias = [
+        { name: "Laptops", icon: "💻", description: "Portátiles de alto rendimiento" },
+        { name: "Periféricos", icon: "🖱️", description: "Teclados, mouses y más" },
+        { name: "Audio", icon: "🎧", description: "Audífonos y parlantes" },
+        { name: "Componentes", icon: "🔧", description: "Partes para ensamblar" },
+    ];
     const productos = [
         { id: 1, name: "Laptop Ultrabook X1", price: "$999", description: "Rendimiento pro para trabajo y gaming ligero." },
         { id: 2, name: "Teclado Mecánico RGB", price: "$79", description: "Tactile y duradero con luces personalizables." },
@@ -30,15 +36,20 @@ const inicio = () => {
                 </div>
             </section>
 
-            <section className="brands-section">
-                <h2>Marcas presentes</h2>
-                <ul className="brand-list">
-                    {marcas.map((marca) => (
-                        <li key={marca} className="brand-item">
-                            {marca}
-                        </li>
+            <section className="categories-section">
+                <h2>Categorías</h2>
+                <div className="category-grid">
+                    {categorias.map((categoria) => (
+                        <article key={categoria.name} className="category-card">
+                            <div className="category-icon">{categoria.icon}</div>
+                            <h3>{categoria.name}</h3>
+                            <p>{categoria.description}</p>
+                            <a className="btn-small" href="/Productos">
+                                Explorar
+                            </a>
+                        </article>
                     ))}
-                </ul>
+                </div>
             </section>
 
             <section className="products-section">
@@ -58,6 +69,17 @@ const inicio = () => {
                         </article>
                     ))}
                 </div>
+            </section>
+
+            <section className="brands-section">
+                <h2>Marcas presentes</h2>
+                <ul className="brand-list">
+                    {marcas.map((marca) => (
+                        <li key={marca} className="brand-item">
+                            {marca}
+                        </li>
+                    ))}
+                </ul>
             </section>
         </main>
     );
