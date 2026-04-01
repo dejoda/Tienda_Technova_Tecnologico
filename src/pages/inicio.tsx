@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import { ProductoService } from "../service/productoService";
+import type { ProductoPresentacion } from "../service/interfaces/ProductoPresentacion";
+
 import heroImg from "../assets/hero.jpg";
 import laptopImg from "../assets/categoria/laptop.jpg";
 import perifericos from "../assets/categoria/perifericos.jpg";
@@ -5,7 +9,9 @@ import audifonosImg from "../assets/categoria/audifonos.jpg";
 import componentesImg from "../assets/categoria/componentes.jpg";
 import "./style/inicio.css";
 
-const inicio = () => {
+const Inicio = () => {
+  const [productos, setProductos] = useState<ProductoPresentacion[]>([]);
+
   const marcas = ["TECHNOVA", "Quantum", "NextGear", "HyperOne", "NeonPulse"];
 
   const categorias = [
@@ -35,32 +41,21 @@ const inicio = () => {
     },
   ];
 
-  const productos = [
-    {
-      id: 1,
-      name: "Laptop Ultrabook X1",
-      price: "$999",
-      description: "Rendimiento pro para trabajo y gaming ligero.",
-    },
-    {
-      id: 2,
-      name: "Teclado Mecánico RGB",
-      price: "$79",
-      description: "Tactile y duradero con luces personalizables.",
-    },
-    {
-      id: 3,
-      name: "Mouse Gummies",
-      price: "$49",
-      description: "Precisión 16K DPI y grip ergonómico.",
-    },
-    {
-      id: 4,
-      name: "Audífonos 7.1 Surround",
-      price: "$129",
-      description: "Sonido inmersivo y micrófono con cancelación de ruido.",
-    },
-  ];
+  useEffect(() => {
+    const cargarProductos = async () => {
+      try {
+        const service = new ProductoService();
+        const data = await service.getProductosPresentacion();
+
+        // 👇 SOLO 8 PRODUCTOS
+        setProductos(data.slice(0, 8));
+      } catch (error) {
+        console.error("Error cargando productos:", error);
+      }
+    };
+
+    cargarProductos();
+  }, []);
 
   return (
     <main className="home-page">
@@ -107,6 +102,7 @@ const inicio = () => {
           ))}
         </div>
       </section>
+
       <section className="brands-section">
         <h2>Marcas</h2>
         <ul className="brand-list">
@@ -117,27 +113,47 @@ const inicio = () => {
           ))}
         </ul>
       </section>
+
       <section className="products-section">
         <h2>Productos destacados</h2>
         <div className="product-grid">
-          {productos.map((producto) => (
-            <div key={producto.id} className="product-card">
-              <div className="product-thumb">{producto.name.charAt(0)}</div>
-              <h3>{producto.name}</h3>
-              <p>{producto.description}</p>
+         {productos.map((producto) => (
+  <div
+    key={producto.id}
+    className="product-card"
+    style={
+      producto.imagen
+        ? {
+            backgroundImage: `url(${producto.imagen})`,
+          }
+        : {}
+    }
+  >
+    <div className="product-overlay">
 
-              <div className="product-footer">
-                <span className="price">{producto.price}</span>
-                <a href="/Productos" className="btn-small">
-                  Ver más
-                </a>
-              </div>
-            </div>
-          ))}
+      <span className="product-brand">
+        {producto.marca}
+      </span>
+
+      <h3>{producto.nombre}</h3>
+
+      <p>{producto.descripcion}</p>
+
+      <div className="product-footer">
+        <span className="price">S/ {producto.precio}</span>
+
+        <a href="/Productos" className="btn-small">
+          Ver más
+        </a>
+      </div>
+
+    </div>
+  </div>
+))}
         </div>
       </section>
     </main>
   );
 };
 
-export default inicio;
+export default Inicio;
