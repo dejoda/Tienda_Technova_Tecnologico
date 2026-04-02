@@ -5,5 +5,5 @@ export interface ProductoPresentacion {
   categoria: string;
   descripcion: string;
   marca: string;
-  imagen: string | null; // 👈 importante porque puede venir null
+  imagen: string | null; 
 }
