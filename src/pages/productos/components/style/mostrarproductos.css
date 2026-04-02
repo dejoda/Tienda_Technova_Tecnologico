@@ -1,0 +1,126 @@
+:root {
+  --bg: #0a0a11;
+  --fg: #eaeefe;
+  --muted: #aab2c5;
+  --accent: #ff2d95;
+  --accent-dark: #7b61ff;
+}
+
+/* ---------- Sección de productos ---------- */
+.products-section {
+  padding: 2.5rem 1rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.products-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--fg);
+}
+
+/* ---------- Grid de productos ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* ---------- Tarjeta de producto ---------- */
+.product-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 280px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Overlay y contenido ---------- */
+.product-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+  width: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.2)
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* ---------- Marca ---------- */
+.product-brand {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+
+/* ---------- Nombre ---------- */
+.product-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+/* ---------- Categoría y descripción ---------- */
+.product-category,
+.product-description {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ---------- Precio ---------- */
+.price {
+  font-weight: 900;
+  color: #fff;
+  margin-top: 0.3rem;
+}
+
+/* ---------- Botón "Añadir al carrito" ---------- */
+.btn-small {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: background 0.25s ease;
+}
+
+.btn-small:hover {
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 780px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .products-section h2 {
+    font-size: 1.75rem;
+  }
+}

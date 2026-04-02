@@ -1,8 +1,9 @@
+import { useParams } from "react-router";
+
 const Detalle_product=()=>{
+     const { id } = useParams<{ id: string }>();
     return (
-        <>
-        Detalles
-        </>
+        <div>Detalle del producto {id}</div>
     )
 }
 
