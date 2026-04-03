@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router";
 import App from "../App";
 import inicio from "../pages/inicio/inicio";
 import Productos from "../pages/productos/productos";
-import Detalle_product from "../pages/detalle_product";
+import Detalle_product from "../pages/detalle_producto/detalle_product";
 import Login from "../pages/login";
 import Error404 from "../pages/Error404";
 import Register from "../pages/register";

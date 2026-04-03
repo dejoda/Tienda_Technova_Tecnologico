@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { ProductoPresentacion } from "../service/interfaces/ProductoPresentacion";
+import type { ProductoDetalle } from "./interfaces/ProductoDetalle";
 
 const URL = "http://localhost:8080/productos";
 
@@ -33,4 +34,8 @@ async getMarcas(): Promise<string[]> {
   return response.data;
 }
 
+async getProductoDetalle(id: number): Promise<ProductoDetalle> {
+  const response = await axios.get(`${URL}/${id}/detalle`);
+  return response.data;
+}
 }

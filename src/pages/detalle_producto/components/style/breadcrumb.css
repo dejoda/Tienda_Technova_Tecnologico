@@ -1,0 +1,30 @@
+.breadcrumb {
+  width: 95%;
+  max-width: 1500px;
+  margin: 20px auto 0;
+
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* Separador */
+.breadcrumb span {
+  opacity: 0.8;
+}
+
+/* Hover tipo link */
+.breadcrumb span:hover {
+  color: white;
+  cursor: pointer;
+}
+
+/* Último (activo) */
+.breadcrumb .activo {
+  color: white;
+  font-weight: 600;
+  cursor: default;
+}
