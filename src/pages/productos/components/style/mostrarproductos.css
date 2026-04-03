@@ -115,6 +115,8 @@
   background: linear-gradient(90deg, var(--accent-dark), var(--accent));
 }
 
+
+
 /* ---------- Responsive ---------- */
 @media (max-width: 780px) {
   .product-grid {

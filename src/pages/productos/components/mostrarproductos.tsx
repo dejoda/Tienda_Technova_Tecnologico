@@ -34,38 +34,43 @@ const MostrarProductos = ({ filtros }: Props) => {
   };
 
   return (
-    <section className="products-section">
-      <div className="product-grid">
-        {productos.map((p) => (
-          <div
-            key={p.id}
-            className="product-card"
-            style={{ backgroundImage: `url(${p.imagen || defaultImg})` }}
-          >
-            <div className="product-overlay">
-              <Link to={`/Productos/detalle_product/${p.id}/${p.nombre}`} className="product-brand">
-                {p.marca}
-              </Link>
-              <Link to={`/Productos/detalle_product/${p.id}/${p.nombre}`} className="product-name">
-                {p.nombre}
-              </Link>
-              <p className="product-category">{p.categoria}</p>
-              <p className="product-description">{p.descripcion}</p>
+   <section className="products-section">
+  <div className="product-grid">
+    {productos.map((p) => (
+      <Link
+        to={`/Productos/detalle_product/${p.id}/${p.nombre}`}
+        key={p.id}
+        style={{ textDecoration: "none" }}
+      >
+        <div
+          className="product-card"
+          style={{ backgroundImage: `url(${p.imagen || defaultImg})` }}
+        >
+          <div className="product-overlay">
+            <span className="product-brand">{p.marca}</span>
+            <span className="product-name">{p.nombre}</span>
+            <p className="product-category">{p.categoria}</p>
+            <p className="product-description">{p.descripcion}</p>
 
-              <div className="product-footer">
-                <span className="price">S/ {p.precio}</span>
-                <button
-                  className="btn-small"
-                  onClick={() => agregarAlCarrito(p)}
-                >
-                  Añadir al carrito
-                </button>
-              </div>
+            <div className="product-footer">
+              <span className="price">S/ {p.precio}</span>
+
+              <button
+                className="btn-small"
+                onClick={(e) => {
+                  e.preventDefault(); // 🔥 evita que navegue
+                  agregarAlCarrito(p);
+                }}
+              >
+                Añadir al carrito
+              </button>
             </div>
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+      </Link>
+    ))}
+  </div>
+</section>
   );
 };
 
