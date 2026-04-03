@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import type { ProductoPresentacion } from "../../../service/interfaces/ProductoPresentacion";
 import { ProductoService } from "../../../service/productoService";
+import { Link } from "react-router"; 
 
-import "./style/destacados.css"
+import "./style/destacados.css";
 
 const Destacados = () => {
-
   const [productos, setProductos] = useState<ProductoPresentacion[]>([]);
 
   useEffect(() => {
@@ -22,41 +22,51 @@ const Destacados = () => {
 
     cargarProductos();
   }, []);
+
   return (
     <section className="products-section">
       <h2>Recomendados para ti</h2>
+
       <div className="product-grid">
         {productos.map((producto) => (
-          <div
+          <Link
             key={producto.id}
-            className="product-card"
-            style={
-              producto.imagen
-                ? {
-                    backgroundImage: `url(${producto.imagen})`,
-                  }
-                : {}
-            }
+            to={`/Productos/detalle_product/${producto.id}/${producto.nombre}`}
+            style={{ textDecoration: "none" }}
           >
-            <div className="product-overlay">
-              <span className="product-brand">{producto.marca}</span>
+            <div
+              className="product-card"
+              style={
+                producto.imagen
+                  ? { backgroundImage: `url(${producto.imagen})` }
+                  : {}
+              }
+            >
+              <div className="product-overlay">
+                <span className="product-brand">{producto.marca}</span>
 
-              <h3>{producto.nombre}</h3>
+                <h3>{producto.nombre}</h3>
 
-              <p>{producto.descripcion}</p>
+                <p>{producto.descripcion}</p>
 
-              <div className="product-footer">
-                <span className="price">S/ {producto.precio}</span>
+                <div className="product-footer">
+                  <span className="price">S/ {producto.precio}</span>
 
-                <a href="/productos" className="btn-small">
-                  Ver Detalles
-                </a>
+                  {/* 🔥 botón visual (no navegación aparte) */}
+                  <button
+                    className="btn-small"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Añadir al carrito
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
   );
 };
- export default Destacados;
+
+export default Destacados;
