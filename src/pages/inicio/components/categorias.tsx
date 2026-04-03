@@ -1,57 +1,78 @@
+import { useEffect, useState } from "react";
+import type { Categoria } from "../../../service/interfaces/Categoria";
+import { CategoriaService } from "../../../service/categoriaService";
 
-import laptopImg from "../../../assets/categoria/laptop.jpg";
-import perifericos from "../../../assets/categoria/perifericos.jpg";
-import audifonosImg from "../../../assets/categoria/audifonos.jpg";
-import componentesImg from "../../../assets/categoria/componentes.jpg";
+import Laptops from "../../../assets/categoria/laptop.jpg";
+import Teclados from "../../../assets/categoria/perifericos.jpg";
+import Audifono from "../../../assets/categoria/audifonos.jpg";
+import Componentes_Pc from "../../../assets/categoria/componentes.jpg";
+import Mouse from "../../../assets/categoria/Mouses.webp";
+import Monitor from "../../../assets/categoria/Monitor.jpg";
+import Celulares from "../../../assets/categoria/Celulares.webp";
 
-import "./style/categorias.css"
+import "./style/categorias.css";
 
-const categorias = [
-  {
-    name: "Laptops",
-    icon: "💻",
-    description: "Portátiles de alto rendimiento",
-    image: laptopImg,
-  },
-  {
-    name: "Periféricos",
-    icon: "🖱️",
-    description: "Teclados, mouses y más",
-    image: perifericos,
-  },
-  {
-    name: "Audio",
-    icon: "🎧",
-    description: "Audífonos y parlantes",
-    image: audifonosImg,
-  },
-  {
-    name: "Componentes",
-    icon: "🔧",
-    description: "Partes para ensamblar",
-    image: componentesImg,
-  },
-];
+/* 🔹 Mapa de imágenes por clave */
+const imagenesMap: Record<string, string> = {
+  lapt: Laptops,
+  tecl: Teclados,
+  audi: Audifono,
+  comp: Componentes_Pc,
+  mous: Mouse,
+  moni: Monitor,
+  celu: Celulares,
+};
+
+/* 🔹 Función que relaciona nombre con imagen */
+const obtenerImagen = (nombre: string): string => {
+  const nombreLower = nombre.toLowerCase();
+
+  for (const key in imagenesMap) {
+    if (nombreLower.includes(key)) {
+      return imagenesMap[key];
+    }
+  }
+
+  // Imagen por defecto
+  return Laptops;
+};
 
 const Categorias = () => {
+  const [categorias, setCategorias] = useState<Categoria[]>([]);
+
+  useEffect(() => {
+    const service = new CategoriaService();
+
+    service.getCategorias()
+      .then((data) => {
+        const randomCategorias = [...data]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 4);
+
+        setCategorias(randomCategorias);
+      })
+      .catch((error) => {
+        console.error("Error al cargar categorías:", error);
+      });
+  }, []);
+
   return (
     <section className="categories-section">
       <h2>Categorías</h2>
+
       <div className="category-grid">
         {categorias.map((categoria) => (
           <article
-            key={categoria.name}
+            key={categoria.idCategoria}
             className="category-card"
-            style={
-              categoria.image
-                ? { backgroundImage: `url(${categoria.image})` }
-                : {}
-            }
+            style={{
+              backgroundImage: `url(${obtenerImagen(categoria.nombre)})`,
+            }}
           >
             <div className="category-overlay">
-              <div className="category-icon">{categoria.icon}</div>
-              <h3>{categoria.name}</h3>
-              <p>{categoria.description}</p>
+              <h3>{categoria.nombre}</h3>
+              <p>{categoria.descripcion}</p>
+
               <a className="btn-small" href="/Productos">
                 Explorar
               </a>

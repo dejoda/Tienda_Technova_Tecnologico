@@ -5,3 +5,6 @@ Tienda de perifericos Technova utilizando React + Json Server +
 npm i 
 npm i react-router
 npm i axios
+
+
+# Iconos -> npm install @tabler/icons-react

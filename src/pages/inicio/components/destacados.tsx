@@ -14,7 +14,6 @@ const Destacados = () => {
         const service = new ProductoService();
         const data = await service.getProductosPresentacion();
 
-        // 👇 SOLO 8 PRODUCTOS
         setProductos(data.sort(() => 0.5 - Math.random()).slice(0, 6));
       } catch (error) {
         console.error("Error cargando productos:", error);
