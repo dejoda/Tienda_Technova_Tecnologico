@@ -1,0 +1,151 @@
+/* CONTENEDOR */
+.nosotros-container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 120px auto 60px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* HERO */
+.nosotros-hero {
+  text-align: center;
+}
+
+.nosotros-hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.nosotros-hero span {
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.nosotros-hero p {
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* HISTORIA */
+.nosotros-section {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.nosotros-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.nosotros-text p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* CARD LATERAL */
+.nosotros-card {
+  background: linear-gradient(180deg, #0b1020, #0f172a);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+
+  transition: 0.3s;
+}
+
+.nosotros-card:hover {
+  transform: translateY(-5px);
+}
+
+/* GRID */
+.nosotros-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: linear-gradient(180deg, #0b1020, #0f172a);
+  padding: 25px;
+  border-radius: 18px;
+
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card p {
+  color: var(--muted);
+}
+
+/* CONFIANZA */
+.nosotros-confianza {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.confianza-item {
+  background: linear-gradient(180deg, #0b1020, #0f172a);
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.confianza-item:hover {
+  transform: translateY(-5px);
+}
+
+/* STATS */
+.nosotros-stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.nosotros-stats h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.nosotros-stats p {
+  color: var(--muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nosotros-section {
+    grid-template-columns: 1fr;
+  }
+
+  .nosotros-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nosotros-confianza {
+    grid-template-columns: 1fr;
+  }
+
+  .nosotros-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
