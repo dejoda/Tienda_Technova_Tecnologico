@@ -6,6 +6,7 @@ import type { ProductoDetalle } from "../../service/interfaces/ProductoDetalle";
 import "./detalle_product.css";
 import Panel_Images from "./components/panel_images";
 import Panel_Producto from "./components/panel_producto";
+import BreadCrumb from "./components/breadcrumb";
 
 const Detalle_product = () => {
   const { id } = useParams<{ id: string }>();
@@ -38,19 +39,23 @@ const Detalle_product = () => {
   if (!producto) return <p>Cargando producto...</p>;
 
   return (
-    <div className="detalle-container">
-      <Panel_Images
-        producto={producto}
-        imagenPrincipal={imagenPrincipal}
-        setImagenPrincipal={setImagenPrincipal}
-      />
+    <>
+      <BreadCrumb productName={producto.nombre} />
 
-      <Panel_Producto
-        producto={producto}
-        cantidad={cantidad}
-        setCantidad={setCantidad}
-      />
-    </div>
+      <div className="detalle-container">
+        <Panel_Images
+          producto={producto}
+          imagenPrincipal={imagenPrincipal}
+          setImagenPrincipal={setImagenPrincipal}
+        />
+
+        <Panel_Producto
+          producto={producto}
+          cantidad={cantidad}
+          setCantidad={setCantidad}
+        />
+      </div>
+    </>
   );
 };
 

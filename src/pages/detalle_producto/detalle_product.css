@@ -7,8 +7,7 @@
   width: 92%;
   max-width: 1300px;
 
-  /* 🔥 MÁS SEPARACIÓN DEL HEADER */
-  margin: 110px auto 60px auto;
+  margin: 24px auto 60px auto;
 
   padding: 20px;
 }
@@ -18,6 +17,6 @@
 @media (max-width: 900px) {
   .detalle-container {
     grid-template-columns: 1fr;
-    margin: 90px auto 40px auto; /* también ajustado en mobile */
+    margin: 18px auto 40px auto;
   }
 }
