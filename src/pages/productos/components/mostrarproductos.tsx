@@ -5,6 +5,8 @@ import type { Filtros } from "../../../service/interfaces/Filtros";
 import defaultImg from "../../../assets/default.jpg"
 import { Link } from "react-router";
 
+import { useCart } from "../../../context/CartContext";
+
 import "./style/mostrarproductos.css"
 
 const service = new ProductoService();
@@ -15,6 +17,8 @@ interface Props {
 
 const MostrarProductos = ({ filtros }: Props) => {
   const [productos, setProductos] = useState<ProductoPresentacion[]>([]);
+  const { addToCart } = useCart();
+
 
   useEffect(() => {
     const cargarProductos = async () => {
@@ -30,8 +34,13 @@ const MostrarProductos = ({ filtros }: Props) => {
   }, [filtros]);
 
   const agregarAlCarrito = (producto: ProductoPresentacion) => {
-    console.log("Añadido al carrito:", producto);
-  };
+  addToCart({
+    id: producto.id,
+    name: producto.nombre,
+    price: producto.precio,
+    image: producto.imagen || defaultImg,
+  });
+};
 
   return (
    <section className="products-section">

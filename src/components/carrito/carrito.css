@@ -1,0 +1,364 @@
+/* ===== OVERLAY ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+
+  z-index: 999;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===== DRAWER ===== */
+.carrito-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  width: 400px;
+  max-width: 100%;
+  height: 100%;
+
+  background: linear-gradient(180deg, #0b1220, #020617);
+  color: #eaf0f9;
+
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.8);
+}
+
+.carrito-drawer.open {
+  transform: translateX(0);
+}
+
+/* ===== HEADER ===== */
+.carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.8rem 1rem; /* 🔽 menos altura */
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
+  backdrop-filter: blur(10px);
+}
+
+.carrito-header h3 {
+  font-size: 1rem; /* 🔽 más pequeño */
+  font-weight: 700;
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+  width: 34px;
+  height: 34px;
+
+  border-radius: 8px;
+  border: none;
+
+  background: rgba(255,255,255,0.08);
+  color: white;
+
+  display: flex;              /* 🔥 CLAVE */
+  align-items: center;        /* 🔥 centra vertical */
+  justify-content: center;    /* 🔥 centra horizontal */
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.close-btn svg{
+  width: 18px;  /* 🔥 tamaño consistente */
+  height: 18px;
+}
+
+.close-btn:hover {
+  background: linear-gradient(135deg, #ff2d95, #7b61ff);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* ===== BODY ===== */
+.carrito-body {
+  flex: 1;
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  overflow-y: auto;
+
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 255, 255, 0.03),
+    transparent 60%
+  );
+}
+
+/* SCROLL */
+.carrito-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.carrito-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(#ff2d95, #7b61ff);
+  border-radius: 10px;
+}
+
+/* EMPTY */
+
+.carrito-body:has(.empty){
+  display: flex;
+  align-items: center;   /* 🔥 centra vertical */
+  justify-content: center; /* 🔥 centra horizontal */
+}
+.empty{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+  text-align: center;
+
+  color: #9aa6bd;
+}
+
+.empty svg{
+  width: 60px;
+  height: 60px;
+
+  padding: 12px;
+  border-radius: 16px;
+
+  background: rgba(123,97,255,0.1);
+  color: #7b61ff;
+}
+
+.carrito-body p {
+  text-align: center;
+  margin-top: 3rem;
+  color: #9aa6bd;
+  font-size: 0.95rem;
+}
+
+/* ===== FOOTER ===== */
+.carrito-footer {
+  padding: 1.3rem 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(8px);
+  margin-top: 0.5rem;
+}
+
+/* TOTAL */
+.total{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px; /* 🔥 espacio clave */
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.06); /* línea sutil */
+}
+
+.total span {
+  color: #9aa6bd;
+}
+
+.total strong {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+/* BOTÓN CHECKOUT */
+.checkout-btn {
+  width: 100%;
+  padding: 1rem;
+
+  border-radius: 14px;
+  border: none;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+
+  color: white;
+
+  background: linear-gradient(135deg, #ff2d95, #7b61ff);
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(123, 97, 255, 0.35);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 500px) {
+  .carrito-drawer {
+    width: 100%;
+  }
+}
+
+/* ============================= */
+/* 🔥 ITEM (se mantiene tu diseño) */
+/* ============================= */
+
+.cart-item {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+
+  padding: 1rem;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition: all 0.25s ease;
+}
+
+.cart-item:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* IMG */
+.cart-img {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+}
+
+.cart-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* INFO */
+.cart-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* NAME */
+.cart-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* PRICE */
+.cart-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-price {
+  font-size: 0.8rem;
+  color: #9aa6bd;
+}
+
+.cart-subtotal {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ACTIONS */
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+/* QTY */
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.cart-qty button {
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+  color: white;
+
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.cart-qty button:hover {
+  background: linear-gradient(135deg, #ff2d95, #7b61ff);
+}
+
+/* REMOVE */
+.cart-remove{
+  background: rgba(255,45,149,0.15);
+  border: none;
+  color: #ff2d95;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 10px;
+
+  display: flex;              /* 🔥 centra icono */
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cart-remove svg{
+  width: 18px;  /* 🔥 tamaño perfecto */
+  height: 18px;
+}
+
+.cart-remove:hover{
+  background: linear-gradient(135deg, #ff2d95, #7b61ff);
+  color: white;
+  transform: scale(1.1);
+}
