@@ -12,19 +12,22 @@
 	background: linear-gradient(90deg, var(--header-bg-1), var(--header-bg-2));
 	border-bottom: none;
 	backdrop-filter: blur(6px);
+	padding: 0 0.5rem;
 	box-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
 
 .header-inner{
-	max-width: 1200px;
+	width: 100%;
+	max-width: 1600px; /* más ancho */
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
-	padding: 0.6rem 1rem;
-}
 
+	/* padding inteligente (responsive) */
+	padding: 0.6rem clamp(1rem, 4vw, 3rem);
+}
 .brand{
 	display:flex;
 	align-items:center;
