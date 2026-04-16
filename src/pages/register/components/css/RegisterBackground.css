@@ -1,0 +1,46 @@
+.register-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(18px);
+  opacity: 0.48;
+  pointer-events: none;
+}
+
+.register-orb-violet {
+  width: clamp(190px, 30vw, 350px);
+  height: clamp(190px, 30vw, 350px);
+  top: 12%;
+  right: -7%;
+  background: radial-gradient(circle, rgba(123, 97, 255, 0.52), rgba(123, 97, 255, 0));
+  animation: registerFloat 7.8s ease-in-out infinite;
+}
+
+.register-orb-pink {
+  width: clamp(220px, 34vw, 420px);
+  height: clamp(220px, 34vw, 420px);
+  left: -10%;
+  bottom: 4%;
+  background: radial-gradient(circle, rgba(255, 45, 149, 0.46), rgba(255, 45, 149, 0));
+  animation: registerFloat 9.4s ease-in-out infinite reverse;
+}
+
+.register-rings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image: radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.35) 0 1px, transparent 1px),
+    radial-gradient(circle at 82% 80%, rgba(255, 255, 255, 0.25) 0 1px, transparent 1px);
+  background-size: 220px 220px, 260px 260px;
+}
+
+@keyframes registerFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}

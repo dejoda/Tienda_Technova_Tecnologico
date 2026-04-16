@@ -1,0 +1,118 @@
+.register-form-card {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(160deg, rgba(11, 11, 19, 0.86), rgba(20, 18, 30, 0.8));
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.46);
+  padding: clamp(1.1rem, 2vw, 1.7rem);
+  backdrop-filter: blur(8px);
+}
+
+.register-form-card h2 {
+  margin: 0 0 1rem;
+  color: #ffffff;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+}
+
+.register-form label {
+  font-size: 0.86rem;
+  color: #c8d3ea;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #edf2fb;
+  border-radius: 10px;
+  padding: 0.72rem 0.82rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.register-form input[type="text"]:focus,
+.register-form input[type="email"]:focus,
+.register-form input[type="password"]:focus {
+  border-color: rgba(123, 97, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(123, 97, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.register-terms {
+  margin-top: 0.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #bcc8df;
+}
+
+.register-terms input {
+  accent-color: #7b61ff;
+}
+
+.register-submit {
+  margin-top: 0.5rem;
+  border: 0;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 0.78rem 1rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff2d95, #7b61ff);
+  box-shadow: 0 12px 28px rgba(123, 97, 255, 0.32);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.register-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(123, 97, 255, 0.4);
+}
+
+.register-divider {
+  margin: 1rem 0 0.85rem;
+  position: relative;
+  text-align: center;
+}
+
+.register-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.register-divider span {
+  position: relative;
+  z-index: 1;
+  padding: 0 0.62rem;
+  color: #9da9c0;
+  background: linear-gradient(160deg, rgba(11, 11, 19, 0.96), rgba(20, 18, 30, 0.94));
+  font-size: 0.82rem;
+}
+
+.register-alt-actions {
+  display: grid;
+}
+
+.register-alt-btn {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e7ecf9;
+  border-radius: 10px;
+  padding: 0.63rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.register-alt-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+}

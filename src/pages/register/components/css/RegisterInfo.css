@@ -1,0 +1,69 @@
+.register-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.register-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  color: #9aa6bd;
+}
+
+.register-info-panel h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.08;
+  color: #ffffff;
+  max-width: 14ch;
+}
+
+.register-description {
+  margin: 0;
+  color: #c2cde1;
+  max-width: 54ch;
+  line-height: 1.6;
+}
+
+.register-benefits {
+  margin: 0.2rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.register-benefits li {
+  color: #d4deef;
+  font-size: 0.9rem;
+  padding: 0.48rem 0.7rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.register-login-cta {
+  margin-top: 0.6rem;
+  color: #b8c4da;
+}
+
+.register-login-cta a {
+  text-decoration: none;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff2d95, #7b61ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.register-login-cta a:hover {
+  opacity: 0.86;
+}
+
+@media (max-width: 900px) {
+  .register-info-panel h1 {
+    max-width: 100%;
+  }
+}

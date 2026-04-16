@@ -1,0 +1,36 @@
+.error-bg-shape {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(18px);
+  opacity: 0.55;
+  z-index: 1;
+}
+
+.error-bg-shape-left {
+  width: clamp(180px, 30vw, 360px);
+  height: clamp(180px, 30vw, 360px);
+  left: -8%;
+  top: 18%;
+  background: radial-gradient(circle, rgba(255, 45, 149, 0.42), rgba(255, 45, 149, 0));
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.error-bg-shape-right {
+  width: clamp(220px, 32vw, 400px);
+  height: clamp(220px, 32vw, 400px);
+  right: -10%;
+  bottom: 8%;
+  background: radial-gradient(circle, rgba(123, 97, 255, 0.4), rgba(123, 97, 255, 0));
+  animation: floatSlow 9s ease-in-out infinite reverse;
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
