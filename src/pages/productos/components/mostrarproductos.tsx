@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { ProductoService } from "../../../service/productoService";
 import type { ProductoPresentacion } from "../../../service/interfaces/ProductoPresentacion";
 import type { Filtros } from "../../../service/interfaces/Filtros";
-import defaultImg from "../../../assets/default.jpg"
+import defaultImg from "../../../assets/default.jpg";
 import { Link } from "react-router";
 
 import { useCart } from "../../../context/CartContext";
 
-import "./style/mostrarproductos.css"
+import "./style/mostrarproductos.css";
 
 const service = new ProductoService();
 
@@ -18,7 +18,6 @@ interface Props {
 const MostrarProductos = ({ filtros }: Props) => {
   const [productos, setProductos] = useState<ProductoPresentacion[]>([]);
   const { addToCart } = useCart();
-
 
   useEffect(() => {
     const cargarProductos = async () => {
@@ -34,52 +33,59 @@ const MostrarProductos = ({ filtros }: Props) => {
   }, [filtros]);
 
   const agregarAlCarrito = (producto: ProductoPresentacion) => {
-  addToCart({
-    id: producto.id,
-    name: producto.nombre,
-    price: producto.precio,
-    image: producto.imagen || defaultImg,
-  });
-};
+    addToCart({
+      id: producto.id,
+      name: producto.nombre,
+      price: producto.precio,
+      image: producto.imagen || defaultImg,
+    });
+  };
+
+  const recortarTexto = (texto?: string, max = 30) => {
+    if (!texto) return "";
+    return texto.length > max ? texto.slice(0, max) + "..." : texto;
+  };
 
   return (
-   <section className="products-section">
-  <div className="product-grid">
-    {productos.map((p) => (
-      <Link
-        to={`/Productos/detalle_product/${p.id}/${p.nombre}`}
-        key={p.id}
-        style={{ textDecoration: "none" }}
-      >
-        <div
-          className="product-card"
-          style={{ backgroundImage: `url(${p.imagen || defaultImg})` }}
-        >
-          <div className="product-overlay">
-            <span className="product-brand">{p.marca}</span>
-            <span className="product-name">{p.nombre}</span>
-            <p className="product-category">{p.categoria}</p>
-            <p className="product-description">{p.descripcion}</p>
+    <section className="products-section">
+      <div className="product-grid">
+        {productos.map((p) => (
+          <Link
+            to={`/Productos/detalle_product/${p.id}/${p.nombre}`}
+            key={p.id}
+            style={{ textDecoration: "none" }}
+          >
+            <div
+              className="product-card"
+              style={{ backgroundImage: `url(${p.imagen || defaultImg})` }}
+            >
+              <div className="product-overlay">
+                <span className="product-brand">{p.marca}</span>
+                <span className="product-name">{p.nombre}</span>
+                <p className="product-category">{p.categoria}</p>
+                <p className="product-description">
+                  {recortarTexto(p.descripcion, 30)}
+                </p>
 
-            <div className="product-footer">
-              <span className="price">S/ {p.precio}</span>
+                <div className="product-footer">
+                  <span className="price">S/ {p.precio}</span>
 
-              <button
-                className="btn-small"
-                onClick={(e) => {
-                  e.preventDefault(); 
-                  agregarAlCarrito(p);
-                }}
-              >
-                Añadir al carrito
-              </button>
+                  <button
+                    className="btn-small"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      agregarAlCarrito(p);
+                    }}
+                  >
+                    Añadir al carrito
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </Link>
-    ))}
-  </div>
-</section>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 };
 
