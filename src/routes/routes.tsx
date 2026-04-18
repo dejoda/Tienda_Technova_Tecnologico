@@ -4,7 +4,7 @@ import inicio from "../pages/inicio/inicio";
 import Productos from "../pages/productos/productos";
 import Detalle_product from "../pages/detalle_producto/detalle_product";
 import Login from "../pages/login/login";
-import Error404 from "../pages/error/Error404";
+import Error404 from "../pages/error404/Error404";
 import Register from "../pages/register/register";
 import Nosotros from "../pages/nosotros/nosotros";
 
